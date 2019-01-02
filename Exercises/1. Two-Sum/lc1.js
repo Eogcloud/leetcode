@@ -4,15 +4,17 @@
  * @return {number[]}
  */
 var twoSum = ( nums, target ) => {
-	nums.forEach(( firstValue, firstIndex, nums ) => {
-			nums.slice(1).forEach(( secondValue ) => {
-					console.log(((( firstValue + secondValue ) / target ) === 0 ? 
-						[ nums[firstIndex], nums.indexOf(secondValue)] : null ))  
-				}
-			)	
+	let hashedNums = new Map();
+
+	nums.forEach( (value, index) => {
+		let complement = target - nums[ index ];
+		
+		if ( hashedNums.has( complement )) {
+			let x = Map.values(hashedNums);
+			return [ x, index ];
 		}
-	
-	)
+		else hashedNums.set( value, index )
+	});
 };
 
-console.log(twoSum([2, 7, 11, 15], 9))
+console.log( twoSum([2, 7, 11, 15], 9) )
