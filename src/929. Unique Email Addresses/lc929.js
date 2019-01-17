@@ -4,8 +4,13 @@
  */
 var numUniqueEmails = function (emails) {
 
-		emails.forEach(email => {
-			console.log(email.split('@')[0].split('+')[0].replace('.', '') + '@' + email.split('@')[1])
+	String.prototype.replaceAll = (search, replacement) => {
+		var target = this;
+		return target.split(search).join(replacement);
+	};
+
+	emails.forEach(email => {
+			console.log( ( email.split('@')[0].split('+')[0].replaceAll('.', '') ) + '@' + email.split('@')[1])
 		})
 };
 
